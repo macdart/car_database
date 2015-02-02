@@ -4,5 +4,10 @@ with sqlite3.connect("cars.db") as connection:
     c = connection.cursor()
     
 
-    for row in c.execute("SELECT  model, quantity from inventory WHERE make='Ford'"):
-        print row
+    c.execute("SELECT  model, quantity from inventory WHERE make='Ford'")
+        
+    rows = c.fetchall()
+
+    for r in rows:
+        print r[0], r[1]
+
